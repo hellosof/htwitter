@@ -25,17 +25,27 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active">
+        <li >
 
 <%= link_to "New Tweet",  new_tweet_path %>
 
+
+
         	
-        <li><a href="#">Link</a></li>
+        <li ><%= link_to "Newsfeed",  tweets_path %></li>
         
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li>
+			<% if user_signed_in? %>
+				<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+			<% else %>
+				<%= link_to "Sign in", user_session_path %>
+			<% end %>
+
+
+        </a></li>
        
             
           </ul>
@@ -45,6 +55,9 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class = "container">
+
+
+
 
 
 	<% flash.each do |key,value| %>
