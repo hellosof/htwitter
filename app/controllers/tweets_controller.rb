@@ -6,8 +6,11 @@ end
 
 def create
 	@tweet = Tweet.new(tweeet_params)
-	@tweet.save
-	render 'new'
+	if @tweet.save
+		flash[:success] = "You have created a tweet"
+		redirect_to new_tweet_path
+	end
+
 end
 
 def tweeet_params
